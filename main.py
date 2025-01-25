@@ -8,6 +8,7 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
+from pytz import timezone
 from config import *
 
 class SeattlePermitScraper:
@@ -44,7 +45,7 @@ class SeattlePermitScraper:
         try:
             startup_message = [
                 ["Seattle Permit Scraper Status"],
-                [f"Scraper started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"],
+                [f"Scraper started at: {datetime.now().astimezone(timezone('US/Eastern')).strftime('%Y-%m-%d %H:%M:%S')} EST"],
                 ["Status: Active"],
                 ["Update frequency: Every 6 hours"],
                 [""],  # Empty row
